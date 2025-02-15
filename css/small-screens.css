@@ -1,0 +1,98 @@
+/* Override for small screens */
+.modal-body form {
+  flex-direction: column;
+}
+.form-item {
+  flex: 1 1 100%;
+}
+@media screen and (max-width: 768px) {
+  .services {
+    flex-direction: column;
+    align-items: center; /* Center items if desired */
+  }
+  .service-item {
+    width: 100%; /* Make each item take the full width */
+    margin-bottom: 1rem; /* Optional: add some spacing between items */
+  }
+}
+@media screen and (max-width: 768px) {
+  header nav ul {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  /* New rules to stack service items vertically */
+  .services {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .service-item {
+    width: 100%;  /* Full width for each service item */
+    margin-bottom: 1rem;  /* Optional: spacing between items */
+  }
+}
+/* Hamburger Menu for small screens */
+/* Mobile Bottom Navigation */
+.mobile-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #fff;
+  border-top: 1px solid #ccc;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0.5rem 0;
+  z-index: 1000;
+}
+.mobile-nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #333;
+  text-decoration: none;
+  font-size: 0.8rem;
+}
+.mobile-nav-item i {
+  font-size: 1.5rem;
+}
+/* Mobile Services Menu (hidden by default) */
+.mobile-services-menu {
+  position: fixed;
+  bottom: 60px; /* Positioned above the bottom nav */
+  left: 0;
+  right: 0;
+  background: #fff;
+  border-top: 1px solid #ccc;
+  display: none; /* Hidden by default */
+  z-index: 1001;
+  max-height: 50%;
+  overflow-y: auto;
+  padding: 1rem;
+  /* Optional: add a smooth transition */
+  transition: transform 0.3s ease;
+  transform: translateY(100%);
+}
+.mobile-services-menu.active {
+  display: block;
+  transform: translateY(0);
+}
+.mobile-services-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.mobile-services-menu li {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #eee;
+}
+.mobile-services-menu li:last-child {
+  border-bottom: none;
+}
+.mobile-services-menu a {
+  text-decoration: none;
+  color: #333;
+  font-size: 1rem;
+}
