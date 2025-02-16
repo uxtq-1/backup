@@ -7,7 +7,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>OPS Solutions Services</title>
-  <!-- Global CSS for big screens -->
+  <!-- Global CSS (Desktop-First) -->
   <link rel="stylesheet" href="css/global.css">
   <!-- Additional overrides for small screens -->
   <link rel="stylesheet" media="(max-width: 768px)" href="css/small-screens.css">
@@ -20,7 +20,7 @@
 </head>
 <body>
   <!-- ==================================================================
-       Header Section: Navigation & Toggle Buttons
+       Header Section: Navigation & Toggle Buttons (Desktop Only)
        ================================================================== -->
   <header>
     <nav>
@@ -32,11 +32,14 @@
         <li><a href="professionals.html" data-en="Professionals" data-es="Profesionales">Professionals</a></li>
       </ul>
     </nav>
+    <!-- REMOVE or comment out if you only want toggles in the mobile nav
     <div class="toggle-container">
       <button id="theme-toggle"></button>
       <button id="language-toggle"></button>
     </div>
+    -->
   </header>
+
   <!-- ==================================================================
        Hero Section
        ================================================================== -->
@@ -83,6 +86,7 @@
       <a href="professionals.html" class="btn" data-en="Learn More" data-es="Saber Más">Learn More</a>
     </div>
   </section>
+
   <!-- ==================================================================
        Footer Section
        ================================================================== -->
@@ -101,6 +105,7 @@
       <i class="fas fa-envelope-open-text"></i>
     </button>
   </div>
+
   <!-- ==================================================================
        Join Modal
        ================================================================== -->
@@ -166,6 +171,7 @@
       </div>
     </div>
   </div>
+
   <!-- ==================================================================
        Contact Modal
        ================================================================== -->
@@ -220,6 +226,7 @@
       </div>
     </div>
   </div>
+
   <!-- ==================================================================
        Mobile Bottom Navigation & Services Menu (Small Screens)
        ================================================================== -->
@@ -233,11 +240,16 @@
       <i class="fas fa-bars"></i>
       <span>Services</span>
     </button>
+    <!-- Language Toggle -->
+    <button class="mobile-nav-item" id="language-toggle">EN/ES</button>
+    <!-- Theme Toggle -->
+    <button class="mobile-nav-item" id="theme-toggle">Dark/Light</button>
     <a href="#" class="mobile-nav-item">
       <i class="fas fa-comment-alt"></i>
       <span>Chat</span>
     </a>
   </nav>
+
   <!-- Hidden Mobile Services Menu -->
   <div class="mobile-services-menu" id="mobile-services-menu">
     <ul>
@@ -247,6 +259,7 @@
       <li><a href="professionals.html">Professionals</a></li>
     </ul>
   </div>
+
   <!-- ==================================================================
        JavaScript: Main Functionality & Mobile Menu Toggle
        ================================================================== -->
