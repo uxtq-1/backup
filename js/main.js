@@ -3,8 +3,10 @@ document.addEventListener('DOMContentLoaded', function(){
   const themeToggleButton = document.getElementById('theme-toggle');
   const bodyElement = document.body;
   const savedTheme = localStorage.getItem('theme') || 'light';
+  // Initialize theme
   bodyElement.setAttribute('data-theme', savedTheme);
   themeToggleButton.textContent = savedTheme === 'light' ? 'Dark' : 'Light';
+  // Toggle theme on button click
   themeToggleButton.addEventListener('click', function(){
     const currentTheme = bodyElement.getAttribute('data-theme');
     if(currentTheme === 'light'){
@@ -38,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function(){
   }
   updateLanguage();
   languageToggleButton.addEventListener('click', function(){
-    currentLanguage = currentLanguage === 'en' ? 'es' : 'en';
+    currentLanguage = (currentLanguage === 'en') ? 'es' : 'en';
     languageToggleButton.textContent = currentLanguage === 'en' ? 'ES' : 'EN';
     document.body.setAttribute('lang', currentLanguage);
     updateLanguage();
@@ -49,6 +51,7 @@ document.addEventListener('DOMContentLoaded', function(){
   const modalOverlayElements = document.querySelectorAll('.modal-overlay');
   const closeModalButtons = document.querySelectorAll('[data-close]');
   const floatingIcons = document.querySelectorAll('.floating-icon');
+  // Open modals
   floatingIcons.forEach(function(icon){
     icon.addEventListener('click', function(){
       const modalId = icon.getAttribute('data-modal');
@@ -70,6 +73,7 @@ document.addEventListener('DOMContentLoaded', function(){
       }
     });
   });
+  // Close modals
   closeModalButtons.forEach(function(button){
     button.addEventListener('click', function(){
       const modalElement = button.closest('.modal-overlay');
@@ -87,6 +91,7 @@ document.addEventListener('DOMContentLoaded', function(){
       }
     });
   });
+  // Close modal when clicking outside or pressing ESC
   modalOverlayElements.forEach(function(overlay){
     overlay.addEventListener('click', function(event){
       if(event.target === overlay){
@@ -114,6 +119,7 @@ document.addEventListener('DOMContentLoaded', function(){
     console.log('Service workers are not supported in this browser.');
   }
 });
+// Mobile services menu toggle
 document.addEventListener("DOMContentLoaded", function() {
   var servicesToggle = document.getElementById("services-toggle");
   var mobileServicesMenu = document.getElementById("mobile-services-menu");
