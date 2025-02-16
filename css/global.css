@@ -6,6 +6,7 @@
   padding: 0;
   box-sizing: border-box;
 }
+
 body {
   font-family: Arial, sans-serif;
   background-color: #f4f4f4;
@@ -14,6 +15,7 @@ body {
   padding: 20px;
   transition: background-color 0.3s, color 0.3s;
 }
+
 /* ==================================================================
    Header & Navigation
    ================================================================== */
@@ -24,18 +26,21 @@ header {
   text-align: center;
   position: relative;
 }
+
 header nav ul {
   list-style: none;
   display: flex;
   justify-content: center;
   gap: 20px;
 }
+
 header nav a {
   text-decoration: none;
   color: white;
   font-weight: bold;
 }
-/* Toggle Button Container */
+
+/* Toggle Button Container (Desktop) */
 .toggle-container {
   position: absolute;
   top: 10px;
@@ -43,6 +48,7 @@ header nav a {
   display: flex;
   gap: 10px;
 }
+
 .toggle-container button {
   background-color: #7e69ab;
   color: white;
@@ -52,9 +58,11 @@ header nav a {
   border-radius: 20px;
   transition: background-color 0.3s;
 }
+
 .toggle-container button:hover {
   background-color: #9b87f5;
 }
+
 /* ==================================================================
    Hero Section
    ================================================================== */
@@ -62,21 +70,25 @@ header nav a {
   text-align: center;
   padding: 4rem 1rem;
 }
+
 .hero h2 {
   font-size: 2.5rem;
   color: #9b87f5;
 }
+
 .hero p {
   font-size: 1.3rem;
   margin-top: 1rem;
   color: #333;
 }
+
 .hero-image {
   width: 100%;
   height: auto;
   margin-top: 2rem;
   border-radius: 10px;
 }
+
 /* ==================================================================
    Services Section
    ================================================================== */
@@ -88,6 +100,7 @@ header nav a {
   gap: 1rem;
   justify-content: space-between;
 }
+
 .service-item {
   background: transparent;
   border: 2px solid currentColor;
@@ -98,13 +111,16 @@ header nav a {
   transition: background-color 0.3s, color 0.3s, border-color 0.3s;
   color: inherit;
 }
+
 .service-item h3 {
   margin-bottom: 1rem;
   color: #9b87f5;
 }
+
 .service-item p {
   margin-bottom: 1rem;
 }
+
 .service-item .btn {
   background-color: #9b87f5;
   color: #fff;
@@ -114,9 +130,11 @@ header nav a {
   display: inline-block;
   transition: background-color 0.3s;
 }
+
 .service-item .btn:hover {
   background-color: #7e69ab;
 }
+
 /* ==================================================================
    Footer
    ================================================================== */
@@ -127,18 +145,20 @@ footer {
   text-align: center;
   margin-top: 2rem;
 }
+
 /* ==================================================================
    Floating Icons
    ================================================================== */
 .floating-icons {
   position: fixed;
-  bottom: 80px;
+  bottom: 110px;
   right: 20px;
   display: flex;
   flex-direction: column;
   gap: 1rem;
   z-index: 2000;
 }
+
 .floating-icon {
   background-color: #9b87f5;
   border: none;
@@ -153,10 +173,12 @@ footer {
   cursor: pointer;
   transition: background-color 0.3s, transform 0.3s;
 }
+
 .floating-icon:hover {
   background-color: #7e69ab;
   transform: scale(1.1);
 }
+
 /* ==================================================================
    Modal Overlay & Content
    ================================================================== */
@@ -170,9 +192,11 @@ footer {
   z-index: 3000;
   flex-direction: column;
 }
+
 .modal-overlay.active {
   display: flex;
 }
+
 .modal-content {
   background-color: #fff;
   border-radius: 10px;
@@ -184,6 +208,7 @@ footer {
   position: relative;
   overflow: hidden;
 }
+
 /* ==================================================================
    Modal Header (Title and Close Button)
    ================================================================== */
@@ -195,10 +220,12 @@ footer {
   padding: 1rem;
   color: #fff;
 }
+
 .modal-header h3 {
   margin: 0;
   font-size: 1.5rem;
 }
+
 .close-modal {
   background-color: transparent;
   border: none;
@@ -207,9 +234,11 @@ footer {
   cursor: pointer;
   transition: color 0.3s;
 }
+
 .close-modal:hover {
   color: #ddd;
 }
+
 /* ==================================================================
    Modal Body & Form Layout (Grid: Table-like)
    ================================================================== */
@@ -218,26 +247,31 @@ footer {
   flex: 1;
   overflow-y: auto;
 }
+
 /* Use CSS Grid for a two-column layout on big screens */
 .modal-body form {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1rem;
 }
+
 .form-cell {
   display: flex;
   flex-direction: column;
 }
+
 .form-cell label {
   font-weight: bold;
   margin-bottom: 0.5rem;
 }
+
 .form-cell input,
 .form-cell textarea {
   padding: 0.5rem;
   border: 1px solid #ccc;
   border-radius: 5px;
 }
+
 /* ==================================================================
    Modal Footer: Submit Button Aligned Right
    ================================================================== */
@@ -247,6 +281,7 @@ footer {
   padding: 1rem;
   border-top: 1px solid #eee;
 }
+
 .submit-button {
   background-color: #9b87f5;
   color: #fff;
@@ -256,9 +291,11 @@ footer {
   cursor: pointer;
   transition: background-color 0.3s;
 }
+
 .submit-button:hover {
   background-color: #7e69ab;
 }
+
 /* ==================================================================
    Dark Mode Overrides
    ================================================================== */
@@ -266,48 +303,48 @@ body[data-theme="dark"] {
   background-color: #121212;
   color: #e0e0e0;
 }
+
 body[data-theme="dark"] header {
   background-color: #1c1c1c;
 }
+
 body[data-theme="dark"] header nav a {
   color: #e0e0e0;
 }
+
 body[data-theme="dark"] .hero h2 {
   color: #bb86fc;
 }
+
 body[data-theme="dark"] .hero p {
   color: #e0e0e0;
 }
+
 body[data-theme="dark"] .services {
   background-color: #121212;
 }
+
 body[data-theme="dark"] .floating-icon {
   background-color: #bb86fc;
 }
+
 body[data-theme="dark"] .floating-icon:hover {
   background-color: #7e69ab;
 }
+
 body[data-theme="dark"] .modal-content {
   background-color: #000;
   color: #e0e0e0;
 }
+
 body[data-theme="dark"] .modal-content form {
   background-color: rgba(0,0,0,0.85);
 }
+
 /* ==================================================================
-   HIDE Mobile Nav & Menu by default (DESKTOP-FIRST)
+   Hide Mobile Nav & Menu by default (Desktop-First)
    ================================================================== */
 .mobile-nav,
 .mobile-services-menu {
   display: none;
-}
-/* ==================================================================
-   Responsive Adjustments for Larger Screens
-   ================================================================== */
-/* For min-width: 769px, we ensure they're hidden if any confusion. */
-@media screen and (min-width: 769px) {
-  .mobile-nav,
-  .mobile-services-menu {
-    display: none;
-  }
 }
