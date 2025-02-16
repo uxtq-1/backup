@@ -118,7 +118,7 @@ header nav a {
   background-color: #7e69ab;
 }
 /* ==================================================================
-   Footer Section
+   Footer
    ================================================================== */
 footer {
   background-color: #7e69ab;
@@ -295,48 +295,19 @@ body[data-theme="dark"] .modal-content form {
   background-color: rgba(0,0,0,0.85);
 }
 /* ==================================================================
-   Responsive Adjustments for Small Screens
+   HIDE Mobile Nav & Menu by default (DESKTOP-FIRST)
    ================================================================== */
-@media screen and (max-width: 768px) {
-  /* Header Navigation: Stack links vertically */
-  header nav ul {
-    flex-direction: column;
-    gap: 10px;
-  }  
-  /* Services Section: Stack service items vertically */
-  .services {
-    flex-direction: column;
-    align-items: center;
-  }  
-  .service-item {
-    width: 100%;  /* Full width for each service item */
-    margin-bottom: 1rem;  /* Spacing between items */
-  }  
-  /* Adjust Hero Text Size */
-  .hero h2 {
-    font-size: 2rem;
-  }  
-  .hero p {
-    font-size: 1.1rem;
-  }  
-  /* Adjust Floating Icons */
-  .floating-icons {
-    bottom: 20px;
-    right: 10px;
-  }  
-  .floating-icon {
-    width: 50px;
-    height: 50px;
-    font-size: 20px;
-  }
-  /* Modal Adjustments for Small Screens */
-  .modal-content {
-    padding: 2rem;
-    max-width: 95%;
-    height: 90vh;
-  } 
-  /* On small screens, switch form layout to a single column */
-  .modal-body form {
-    grid-template-columns: 1fr;
+.mobile-nav,
+.mobile-services-menu {
+  display: none;
+}
+/* ==================================================================
+   Responsive Adjustments for Larger Screens
+   ================================================================== */
+/* For min-width: 769px, we ensure they're hidden if any confusion. */
+@media screen and (min-width: 769px) {
+  .mobile-nav,
+  .mobile-services-menu {
+    display: none;
   }
 }
