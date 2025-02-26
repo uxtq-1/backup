@@ -43,7 +43,7 @@
   /* Floating icons, placed lower in z-index */
   .floating-icons {
     position: fixed;
-    bottom: 120px;
+    bottom: 85px; /* Adjusted 90px */
     right: 20px;
     display: flex;
     flex-direction: column;
@@ -91,7 +91,7 @@
 .mobile-services-menu {
   position: fixed;
   bottom: 60px;
-  right: 0; /* Aligns to the right side */
+  left: 85px; /* Aligns to the left side */
   background: #fff;
   border-top: 1px solid #ccc;
   display: none;
@@ -101,7 +101,7 @@
   padding: 1rem;
   transition: transform 0.3s ease;
   transform: translateY(100%);
-  width: 80%; /* Set the width to 80% */
+ 
 }
 
   .mobile-services-menu.active {
