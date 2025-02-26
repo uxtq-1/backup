@@ -11,21 +11,21 @@
     display: none;
   }
 
-  /* Show bottom mobile nav */
-  .mobile-nav {
-    display: flex;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: #fff;
-    border-top: 1px solid #ccc;
-    justify-content: space-around;
-    align-items: center;
-    padding: 0.5rem 0;
-    z-index: 3000; /* on top of floating icons */
-    width: 85%; /* Set the width to 85% */
-  }
+  /* Show bottom mobile nav at the right margin */
+.mobile-nav {
+  display: flex;
+  position: fixed;
+  bottom: 0;
+  right: 0; /* Align to the right margin */
+  background: #fff;
+  border-top: 1px solid #ccc;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0.5rem 0;
+  z-index: 3000; /* on top of floating icons */
+  width: 85%; /* Set the width to 85% */
+}
+   
   .mobile-nav-item {
     display: flex;
     flex-direction: column;
