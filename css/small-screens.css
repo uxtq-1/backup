@@ -12,19 +12,20 @@
   }
 
   /* Show bottom mobile nav at the right margin */
-  .mobile-nav {
-    display: flex;
-    position: fixed;
-    bottom: 0;
-    right: 0; /* Align to the right margin */
-    background: #fff;
-    border-top: 1px solid #ccc;
-    justify-content: space-around;
-    align-items: center;
-    padding: 0.5rem 0;
-    z-index: 3000; /* on top of floating icons */
-    width: 85%; /* Set the width to 85% */
-  }
+.mobile-nav {
+  display: flex;
+  position: fixed;
+  bottom: 0;
+  right: 0; /* Align to the right margin */
+  background: #fff;
+  border-top: 1px solid #ccc;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0.5rem 0;
+  z-index: 3000; /* on top of floating icons */
+  width: 85%; /* Set the width to 85% */
+  border-radius: 10px; /* Add rounded corners */
+}
 
   .mobile-nav-item {
     display: flex;
@@ -90,8 +91,6 @@
   .mobile-services-menu {
     position: fixed;
     bottom: 60px;
-    left: 0;
-    right: 0;
     background: #fff;
     border-top: 1px solid #ccc;
     display: none;
@@ -101,6 +100,7 @@
     padding: 1rem;
     transition: transform 0.3s ease;
     transform: translateY(100%);
+    width: 85%; /* Set the width to 85% */
   }
 
   .mobile-services-menu.active {
