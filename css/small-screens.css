@@ -24,6 +24,7 @@
     align-items: center;
     padding: 0.5rem 0;
     z-index: 3000; /* on top of floating icons */
+    width: 85%; /* Set the width to 85% */
   }
   .mobile-nav-item {
     display: flex;
