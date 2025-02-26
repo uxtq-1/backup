@@ -23,8 +23,8 @@
   align-items: center;
   padding: 0.5rem 0;
   z-index: 3000; /* on top of floating icons */
-  width: 85%; /* Set the width to 85% */
-  border-radius: 10px; /* Add rounded corners */
+  width: 80%; /* Set the width to 85% */
+  border-radius: 20px; /* Add rounded corners */
 }
 
   .mobile-nav-item {
