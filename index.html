@@ -32,12 +32,12 @@
         <li><a href="professionals.html" data-en="Professionals" data-es="Profesionales">Professionals</a></li>
       </ul>
     </nav>
-    
+    <!-- REMOVE or comment out if you only want toggles in the mobile nav
     <div class="toggle-container">
       <button id="theme-toggle"></button>
       <button id="language-toggle"></button>
     </div>
-   
+    -->
   </header>
 
   <!-- ==================================================================
@@ -123,18 +123,18 @@
           <div class="form-row">
             <div class="form-cell">
               <label for="join-name" data-en="Name" data-es="Nombre">Name</label>
-              <input type="text" id="join-name" placeholder="" required>
+              <input type="text" id="join-name" placeholder="Enter your name" required>
             </div>
             <div class="form-cell">
               <label for="join-email" data-en="Email" data-es="Correo Electrónico">Email</label>
-              <input type="email" id="join-email" placeholder="" required>
+              <input type="email" id="join-email" placeholder="Enter your email" required>
             </div>
           </div>
           <!-- Row 2 -->
           <div class="form-row">
             <div class="form-cell">
               <label for="join-contact" data-en="Contact Number" data-es="Número de Contacto">Contact Number</label>
-              <input type="tel" id="join-contact" placeholder="" required>
+              <input type="tel" id="join-contact" placeholder="Enter your contact number" required>
             </div>
             <div class="form-cell">
               <label for="join-date" data-en="Date" data-es="Fecha">Date</label>
@@ -160,7 +160,7 @@
             </div>
             <div class="form-cell">
               <label for="join-comment" data-en="Comment" data-es="Comentario">Comment</label>
-              <textarea id="join-comment" rows="4" placeholder="" required></textarea>
+              <textarea id="join-comment" rows="4" placeholder="Tell us about yourself" required></textarea>
             </div>
           </div>
         </form>
@@ -189,18 +189,18 @@
           <div class="form-row">
             <div class="form-cell">
               <label for="contact-name" data-en="Name" data-es="Nombre">Name</label>
-              <input type="text" id="contact-name" placeholder="" required>
+              <input type="text" id="contact-name" placeholder="Enter your name" required>
             </div>
             <div class="form-cell">
               <label for="contact-email" data-en="Email" data-es="Correo Electrónico">Email</label>
-              <input type="email" id="contact-email" placeholder="" required>
+              <input type="email" id="contact-email" placeholder="Enter your email" required>
             </div>
           </div>
           <!-- Row 2 -->
           <div class="form-row">
             <div class="form-cell">
               <label for="contact-number" data-en="Contact Number" data-es="Número de Contacto">Contact Number</label>
-              <input type="tel" id="contact-number" placeholder="" required>
+              <input type="tel" id="contact-number" placeholder="Enter your contact number" required>
             </div>
             <div class="form-cell">
               <label for="contact-date" data-en="Preferred Date" data-es="Fecha Preferida">Preferred Date</label>
@@ -215,7 +215,7 @@
             </div>
             <div class="form-cell">
               <label for="contact-comments" data-en="Comments" data-es="Comentarios">Comments</label>
-              <textarea id="contact-comments" rows="4" placeholder="" required></textarea>
+              <textarea id="contact-comments" rows="4" placeholder="What service are you interested in?" required></textarea>
             </div>
           </div>
         </form>
@@ -263,8 +263,6 @@
   <!-- ==================================================================
        JavaScript: Main Functionality & Mobile Menu Toggle
        ================================================================== -->
-   <script src="js/main.js" defer></script>
-  <script src="js/language-toggle.js" defer></script>
-  <script src="js/service-worker.js" defer></script>
+  <script src="js/main.js"></script>
 </body>
 </html>
