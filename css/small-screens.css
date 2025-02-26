@@ -87,21 +87,22 @@
     grid-template-columns: 1fr;
   }
 
-  /* Mobile Services Menu */
-  .mobile-services-menu {
-    position: fixed;
-    bottom: 60px;
-    background: #fff;
-    border-top: 1px solid #ccc;
-    display: none;
-    z-index: 1001;
-    max-height: 50%;
-    overflow-y: auto;
-    padding: 1rem;
-    transition: transform 0.3s ease;
-    transform: translateY(100%);
-    width: 85%; /* Set the width to 85% */
-  }
+ /* Mobile Services Menu */
+.mobile-services-menu {
+  position: fixed;
+  bottom: 60px;
+  right: 0; /* Aligns to the right side */
+  background: #fff;
+  border-top: 1px solid #ccc;
+  display: none;
+  z-index: 1001;
+  max-height: 50%;
+  overflow-y: auto;
+  padding: 1rem;
+  transition: transform 0.3s ease;
+  transform: translateY(100%);
+  width: 80%; /* Set the width to 80% */
+}
 
   .mobile-services-menu.active {
     display: block;
