@@ -1,132 +1,178 @@
+/*****************************************************
+ * main.js
+ * Handles language switching, side menu toggles,
+ * services sub-menu, modals, and form submissions.
+ *****************************************************/
 document.addEventListener('DOMContentLoaded', function() {
 
-  // ============================
-  // 1) Theme Toggle
-  // ============================
-  const themeToggleButton = document.getElementById('mobile-theme-toggle'); // Updated to new mobile toggle ID
-  const bodyElement = document.body;
-  const savedTheme = localStorage.getItem('theme') || 'light';
-
-  // Initialize theme
-  bodyElement.setAttribute('data-theme', savedTheme);
-  if (themeToggleButton) {
-    // Display initial button text (optional)
-    themeToggleButton.textContent = savedTheme === 'light' ? 'Dark' : 'Light';
-
-    themeToggleButton.addEventListener('click', function() {
-      const currentTheme = bodyElement.getAttribute('data-theme');
-      if (currentTheme === 'light') {
-        bodyElement.setAttribute('data-theme', 'dark');
-        themeToggleButton.textContent = 'Light';
-        localStorage.setItem('theme', 'dark');
-      } else {
-        bodyElement.setAttribute('data-theme', 'light');
-        themeToggleButton.textContent = 'Dark';
-        localStorage.setItem('theme', 'light');
-      }
-    });
-  }
-
-  // ============================
-  // 2) Language Toggle
-  // ============================
-  const languageToggleButton = document.getElementById('mobile-language-toggle'); // Updated to new mobile toggle ID
+  /* ==================================================================
+     1) Language Toggle (EN ↔ ES)
+     ================================================================== */
   let currentLanguage = localStorage.getItem('language') || 'en';
 
-  // Set initial language
-  document.body.setAttribute('lang', currentLanguage);
-  if (languageToggleButton) {
-    // Button label
-    languageToggleButton.textContent = (currentLanguage === 'en') ? 'ES' : 'EN';
+  // Desktop & Mobile toggle buttons
+  const langToggleDesktop = document.getElementById('language-toggle-desktop');
+  const langToggleMobile = document.getElementById('language-toggle-mobile');
 
-    // Helper function to translate
-    function updateLanguage() {
-      const translationElements = document.querySelectorAll('[data-en]');
-      translationElements.forEach((element) => {
-        element.textContent = (currentLanguage === 'en')
-          ? element.getAttribute('data-en')
-          : element.getAttribute('data-es');
-      });
-    }
-
-    updateLanguage();
-
-    languageToggleButton.addEventListener('click', function() {
-      currentLanguage = (currentLanguage === 'en') ? 'es' : 'en';
-      languageToggleButton.textContent = (currentLanguage === 'en') ? 'ES' : 'EN';
-      document.body.setAttribute('lang', currentLanguage);
-      updateLanguage();
-      localStorage.setItem('language', currentLanguage);
+  // Helper function to switch text
+  function updateLanguage(lang) {
+    const elements = document.querySelectorAll('[data-en]');
+    elements.forEach(el => {
+      el.textContent = (lang === 'en')
+        ? el.getAttribute('data-en')
+        : el.getAttribute('data-es');
     });
   }
 
-  // ============================
-  // 3) Modal Functionality
-  // ============================
+  // Initialize language
+  document.body.setAttribute('lang', currentLanguage);
+  updateLanguage(currentLanguage);
+  if (langToggleDesktop) {
+    langToggleDesktop.textContent = (currentLanguage === 'en') ? 'ES' : 'EN';
+  }
+  if (langToggleMobile) {
+    // Usually it's the <span> inside the button that we change
+    const mobileSpan = langToggleMobile.querySelector('span') || langToggleMobile;
+    mobileSpan.textContent = (currentLanguage === 'en') ? 'ES' : 'EN';
+  }
+
+  // Toggle function
+  function toggleLanguage() {
+    currentLanguage = (currentLanguage === 'en') ? 'es' : 'en';
+    localStorage.setItem('language', currentLanguage);
+    updateLanguage(currentLanguage);
+    document.body.setAttribute('lang', currentLanguage);
+
+    // Update button labels
+    if (langToggleDesktop) {
+      langToggleDesktop.textContent = (currentLanguage === 'en') ? 'ES' : 'EN';
+    }
+    if (langToggleMobile) {
+      const mobileSpan = langToggleMobile.querySelector('span') || langToggleMobile;
+      mobileSpan.textContent = (currentLanguage === 'en') ? 'ES' : 'EN';
+    }
+  }
+
+  // Event listeners for toggles
+  if (langToggleDesktop) {
+    langToggleDesktop.addEventListener('click', toggleLanguage);
+  }
+  if (langToggleMobile) {
+    langToggleMobile.addEventListener('click', toggleLanguage);
+  }
+
+  /* ==================================================================
+     2) Right-Side Main Menu: Open/Close
+     ================================================================== */
+  const menuOpenBtn = document.getElementById('menu-open');
+  const menuCloseBtn = document.getElementById('menu-close');
+  const rightSideMenu = document.getElementById('rightSideMenu');
+
+  if (menuOpenBtn && menuCloseBtn && rightSideMenu) {
+    // Open side menu (slide in)
+    menuOpenBtn.addEventListener('click', () => {
+      rightSideMenu.classList.add('open');
+    });
+    // Close side menu (slide out)
+    menuCloseBtn.addEventListener('click', () => {
+      rightSideMenu.classList.remove('open');
+      // Ensure sub-menu is also closed
+      if (servicesSubMenu) {
+        servicesSubMenu.classList.remove('open');
+      }
+    });
+  }
+
+  /* ==================================================================
+     3) Services Sub-Menu: Slide Up
+     ================================================================== */
+  const servicesTrigger = document.querySelector('.services-trigger button');
+  const servicesSubMenu = document.getElementById('servicesSubMenu');
+
+  if (servicesTrigger && servicesSubMenu) {
+    // Toggle sub-menu open/close on button click
+    servicesTrigger.addEventListener('click', (e) => {
+      e.stopPropagation(); // Prevent immediate closing
+      servicesSubMenu.classList.toggle('open');
+    });
+
+    // Close sub-menu if user clicks outside
+    document.addEventListener('click', (evt) => {
+      const clickInsideTrigger = servicesTrigger.contains(evt.target);
+      const clickInsideSubMenu = servicesSubMenu.contains(evt.target);
+      if (!clickInsideTrigger && !clickInsideSubMenu) {
+        servicesSubMenu.classList.remove('open');
+      }
+    });
+  }
+
+  /* ==================================================================
+     4) Modals (Join Us & Contact Us)
+     ================================================================== */
   const modalOverlays = document.querySelectorAll('.modal-overlay');
-  const closeModalButtons = document.querySelectorAll('[data-close]');
   const floatingIcons = document.querySelectorAll('.floating-icon');
+  const closeModalButtons = document.querySelectorAll('[data-close]');
 
-  // Open modals
-  floatingIcons.forEach((icon) => {
-    icon.addEventListener('click', function() {
+  // Open modal on icon click
+  floatingIcons.forEach(icon => {
+    icon.addEventListener('click', () => {
       const modalId = icon.getAttribute('data-modal');
-      const modalElement = document.getElementById(modalId);
-      if (modalElement) {
-        modalElement.classList.add('active');
-        modalElement.focus();
+      const targetModal = document.getElementById(modalId);
+      if (targetModal) {
+        targetModal.classList.add('active');
       }
     });
   });
 
-  // Close modals
-  closeModalButtons.forEach((btn) => {
-    btn.addEventListener('click', function() {
-      const parentOverlay = btn.closest('.modal-overlay');
-      if (parentOverlay) {
-        parentOverlay.classList.remove('active');
+  // Close modal (close button)
+  closeModalButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const parentModal = btn.closest('.modal-overlay');
+      if (parentModal) {
+        parentModal.classList.remove('active');
       }
     });
   });
 
-  // Close modal by clicking outside or pressing ESC
-  modalOverlays.forEach((overlay) => {
-    overlay.addEventListener('click', function(e) {
+  // Close modal on clicking outside or pressing ESC
+  modalOverlays.forEach(overlay => {
+    // Click outside the modal-content
+    overlay.addEventListener('click', (e) => {
       if (e.target === overlay) {
         overlay.classList.remove('active');
       }
     });
-    overlay.addEventListener('keydown', function(e) {
+    // ESC key
+    overlay.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
         overlay.classList.remove('active');
       }
     });
   });
 
-  // ============================
-  // 4) Mobile Services Toggle
-  // ============================
-  const servicesToggle = document.getElementById('mobile-services-toggle'); // Updated to new mobile services toggle ID
-  const mobileServicesMenu = document.getElementById('mobile-services-menu');
-
-  if (servicesToggle && mobileServicesMenu) {
-    servicesToggle.addEventListener('click', function() {
-      mobileServicesMenu.classList.toggle('active');
+  /* ==================================================================
+     5) Form Submissions: Alert + Reset
+     ================================================================== */
+  const joinForm = document.getElementById('join-form');
+  if (joinForm) {
+    joinForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      alert('Thank you for joining us! We have received your details.');
+      joinForm.reset();
+      // Optional: close the modal
+      document.getElementById('join-modal').classList.remove('active');
     });
   }
 
-  // ============================
-  // 5) Register Service Worker (Optional)
-  // ============================
-  if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-      navigator.serviceWorker.register('/service-worker.js')
-        .then((registration) => {
-          console.log('Service Worker registered:', registration.scope);
-        })
-        .catch((err) => {
-          console.error('SW registration failed:', err);
-        });
+  const contactForm = document.getElementById('contact-form');
+  if (contactForm) {
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      alert('Thank you for contacting us! We will get back to you soon.');
+      contactForm.reset();
+      // Optional: close the modal
+      document.getElementById('contact-modal').classList.remove('active');
     });
   }
+
 });
