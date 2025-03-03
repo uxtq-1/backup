@@ -4,95 +4,96 @@
  * services sub-menu, modals, form submissions, and
  * theme toggles (desktop & mobile).
  *****************************************************/
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener("DOMContentLoaded", () => {
 
-  /* ==================================================================
-     1) Language Toggle (EN ↔ ES)
-     ================================================================== */
-  let currentLanguage = localStorage.getItem('language') || 'en';
+  /* ================================================================
+     1) LANGUAGE TOGGLE (Desktop & Mobile)
+     ================================================================= */
+  let currentLanguage = localStorage.getItem("language") || "en";
 
-  const langToggleDesktop = document.getElementById('language-toggle-desktop');
-  const langToggleMobile = document.getElementById('language-toggle-mobile');
+  const langToggleDesktop = document.getElementById("language-toggle-desktop");
+  const langToggleMobile  = document.getElementById("language-toggle-mobile");
 
+  // Helper: set text to either data-en or data-es
   function updateLanguage(lang) {
-    const elements = document.querySelectorAll('[data-en]');
-    elements.forEach(el => {
-      el.textContent = (lang === 'en')
-        ? el.getAttribute('data-en')
-        : el.getAttribute('data-es');
+    const translatableElements = document.querySelectorAll("[data-en]");
+    translatableElements.forEach((el) => {
+      el.textContent = (lang === "en")
+        ? el.getAttribute("data-en")
+        : el.getAttribute("data-es");
     });
   }
 
-  // Initialize language
-  document.body.setAttribute('lang', currentLanguage);
+  // Initialize language on load
+  document.body.setAttribute("lang", currentLanguage);
   updateLanguage(currentLanguage);
 
   // Set initial button labels
   function setLanguageButtonLabels() {
     if (langToggleDesktop) {
-      langToggleDesktop.textContent = (currentLanguage === 'en') ? 'ES' : 'EN';
+      langToggleDesktop.textContent = (currentLanguage === "en") ? "ES" : "EN";
     }
     if (langToggleMobile) {
-      const mobileSpan = langToggleMobile.querySelector('span') || langToggleMobile;
-      mobileSpan.textContent = (currentLanguage === 'en') ? 'ES' : 'EN';
+      // If you have a <span> inside, target that; otherwise just do .textContent
+      const mobileSpan = langToggleMobile.querySelector("span") || langToggleMobile;
+      mobileSpan.textContent = (currentLanguage === "en") ? "ES" : "EN";
     }
   }
   setLanguageButtonLabels();
 
-  // Toggle language function
+  // Toggle function
   function toggleLanguage() {
-    currentLanguage = (currentLanguage === 'en') ? 'es' : 'en';
-    localStorage.setItem('language', currentLanguage);
-    document.body.setAttribute('lang', currentLanguage);
+    currentLanguage = (currentLanguage === "en") ? "es" : "en";
+    localStorage.setItem("language", currentLanguage);
+    document.body.setAttribute("lang", currentLanguage);
     updateLanguage(currentLanguage);
     setLanguageButtonLabels();
   }
 
   // Event listeners for language toggles
   if (langToggleDesktop) {
-    langToggleDesktop.addEventListener('click', toggleLanguage);
+    langToggleDesktop.addEventListener("click", toggleLanguage);
   }
   if (langToggleMobile) {
-    langToggleMobile.addEventListener('click', toggleLanguage);
+    langToggleMobile.addEventListener("click", toggleLanguage);
   }
 
 
-  /* ==================================================================
-     2) Theme Toggle (Desktop & Mobile)
-     ================================================================== */
-  const themeToggleDesktop = document.getElementById('theme-toggle-desktop'); 
-  const themeToggleMobile  = document.getElementById('mobile-theme-toggle'); 
+  /* ================================================================
+     2) THEME TOGGLE (Desktop & Mobile)
+     ================================================================= */
+  const themeToggleDesktop = document.getElementById("theme-toggle-desktop");
+  const themeToggleMobile  = document.getElementById("theme-toggle-mobile");
   const bodyElement = document.body;
-  const savedTheme = localStorage.getItem('theme') || 'light';
+  const savedTheme = localStorage.getItem("theme") || "light";
 
-  // Set initial theme on page load
-  bodyElement.setAttribute('data-theme', savedTheme);
+  // Apply the saved theme on load
+  bodyElement.setAttribute("data-theme", savedTheme);
 
-  // Helper to initialize a given button
+  // Helper to set up a single theme button
   function setupThemeToggle(button) {
-    if (!button) return;  // If there's no such element, do nothing
+    if (!button) return;
 
-    // Display initial button text
-    button.textContent = (savedTheme === 'light') ? 'Dark' : 'Light';
+    // Set initial button text based on savedTheme
+    button.textContent = (savedTheme === "light") ? "Dark" : "Light";
 
-    button.addEventListener('click', function() {
-      const currentTheme = bodyElement.getAttribute('data-theme');
-      if (currentTheme === 'light') {
-        bodyElement.setAttribute('data-theme', 'dark');
-        button.textContent = 'Light';  // Offer user the chance to go back to Light
-        localStorage.setItem('theme', 'dark');
+    button.addEventListener("click", () => {
+      const currentTheme = bodyElement.getAttribute("data-theme");
+      if (currentTheme === "light") {
+        bodyElement.setAttribute("data-theme", "dark");
+        button.textContent = "Light"; // Next possible choice
+        localStorage.setItem("theme", "dark");
       } else {
-        bodyElement.setAttribute('data-theme', 'light');
-        button.textContent = 'Dark';  // Offer user the chance to go to Dark
-        localStorage.setItem('theme', 'light');
+        bodyElement.setAttribute("data-theme", "light");
+        button.textContent = "Dark"; // Next possible choice
+        localStorage.setItem("theme", "light");
       }
     });
   }
 
-  // Initialize toggles
+  // Initialize desktop & mobile theme toggles
   setupThemeToggle(themeToggleDesktop);
   setupThemeToggle(themeToggleMobile);
-
 
   /* ==================================================================
      3) Right-Side Main Menu: Open/Close
