@@ -23,7 +23,7 @@
   align-items: center;
   padding: 0.5rem 0;
   z-index: 3000; /* on top of floating icons */
-  width: 80%; /* Set the width to 85% */
+  width: 85%; /* Set the width to 85% */
   border-radius: 20px; /* Add rounded corners */
 }
 
@@ -40,7 +40,48 @@
     font-size: 1.5rem;
   }
 
-  /* Floating icons, placed lower in z-index */
+/* Mobile Services Menu */
+.mobile-services-menu {
+  position: fixed;
+  bottom: 60px;
+  left: 85px; /* Aligns to the left side */
+  background: #fff;
+  border-top: 1px solid #ccc;
+  display: none;
+  z-index: 1001;
+  max-height: 50%;
+  overflow-y: auto;
+  padding: 1rem;
+  transition: transform 0.3s ease;
+  transform: translateY(100%);
+}
+  .mobile-services-menu.active {
+    display: block;
+    transform: translateY(0);
+  }
+
+  .mobile-services-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .mobile-services-menu li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #eee;
+  }
+
+  .mobile-services-menu li:last-child {
+    border-bottom: none;
+  }
+
+  .mobile-services-menu a {
+    text-decoration: none;
+    color: #333;
+    font-size: 1rem;
+  }
+
+ /* Floating icons, placed lower in z-index */
   .floating-icons {
     position: fixed;
     bottom: 85px; /* Adjusted 90px */
@@ -86,50 +127,6 @@
   .modal-body form {
     grid-template-columns: 1fr;
   }
-
- /* Mobile Services Menu */
-.mobile-services-menu {
-  position: fixed;
-  bottom: 60px;
-  left: 85px; /* Aligns to the left side */
-  background: #fff;
-  border-top: 1px solid #ccc;
-  display: none;
-  z-index: 1001;
-  max-height: 50%;
-  overflow-y: auto;
-  padding: 1rem;
-  transition: transform 0.3s ease;
-  transform: translateY(100%);
- 
-}
-
-  .mobile-services-menu.active {
-    display: block;
-    transform: translateY(0);
-  }
-
-  .mobile-services-menu ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-
-  .mobile-services-menu li {
-    padding: 0.5rem 0;
-    border-bottom: 1px solid #eee;
-  }
-
-  .mobile-services-menu li:last-child {
-    border-bottom: none;
-  }
-
-  .mobile-services-menu a {
-    text-decoration: none;
-    color: #333;
-    font-size: 1rem;
-  }
-}
 
 /* =========================================================
    For screens ≥ 769px, hide mobile nav (redundant but safe)
