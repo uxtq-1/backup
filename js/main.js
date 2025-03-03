@@ -65,18 +65,19 @@ document.addEventListener('DOMContentLoaded', function() {
   // 1) Theme Toggle
   // ============================
   const themeToggleButton = document.getElementById('mobile-theme-toggle'); // Updated to new mobile toggle ID
+  const themeToggleButton = document.getElementById('theme-toggle-desktop'); // Updated to new mobile toggle ID
   const bodyElement = document.body;
   const savedTheme = localStorage.getItem('theme') || 'light';
 
   // Initialize theme
   bodyElement.setAttribute('data-theme', savedTheme);
-  if (themeToggleButton) {
+  if(themeToggleButton) {
     // Display initial button text (optional)
     themeToggleButton.textContent = savedTheme === 'light' ? 'Dark' : 'Light';
 
-    themeToggleButton.addEventListener('click', function() {
+    themeToggleButton.addEventListener('click', function(){
       const currentTheme = bodyElement.getAttribute('data-theme');
-      if (currentTheme === 'light') {
+      if(currentTheme === 'light'){
         bodyElement.setAttribute('data-theme', 'dark');
         themeToggleButton.textContent = 'Light';
         localStorage.setItem('theme', 'dark');
@@ -87,6 +88,7 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
   }
+
   
   /* ==================================================================
      2) Right-Side Main Menu: Open/Close
